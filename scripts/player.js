@@ -47,6 +47,26 @@ class Player {
     this.volume = percent;
     this.soundObject.setVolume(percent);
   }
+
+  //created method to prepend zero to low seconds
+
+    zeroPrepend(second) {
+      let zeroAdd;
+      if (second < 10) {
+      zeroAdd = '0' + second;
+      return zeroAdd;
+    } else {
+      return second;
+      }
+    }
+
+  //convert time to minutes + seconds
+
+  prettyTime(timeInSeconds) {
+    const minutes = Math.floor(timeInSeconds / 60);
+    const seconds = Math.floor(timeInSeconds - minutes * 60);
+    return minutes + ':' + this.zeroPrepend(seconds);
+  }
 }
 
 const player = new Player();
